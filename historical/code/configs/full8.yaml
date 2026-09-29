@@ -1,0 +1,7 @@
+name: full8
+models: [bert-base-uncased, roberta-base, gpt2, gpt2-medium, t5-base, facebook/bart-base, Qwen/Qwen2.5-0.5B, EleutherAI/pythia-410m]
+tasks: [sentiment, nli, factual_recall, qa]
+tiers: [1, 2, 3]
+num_positive: 100
+num_negative: 100
+num_pairs: 10
