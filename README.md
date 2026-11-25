@@ -1,6 +1,8 @@
-# FACI: code for anonymous review
+# FACI — Failure-Aware Causal Interpretability
 
-Code accompanying *When Is Activation Patching Well-Posed? Failure-Aware Causal Evaluation for Mechanistic Interpretability*.
+Code and reproduction materials for *When Is Activation Patching Well-Posed?
+Failure-Aware Causal Evaluation for Mechanistic Interpretability*, by
+Uday Kamath and Vedant Vajre, accepted at ICAART 2027.
 
 | Material | Location |
 | --- | --- |
