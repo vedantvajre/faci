@@ -4,15 +4,15 @@
 
 Use a fresh Google Colab GPU runtime for either notebook. The completed experiments used a Tesla T4, FP32 inference, and deterministic settings. The recorded runtime used Python 3.13.15 and PyTorch 2.11.0+cu128; Colab supplies PyTorch, while the first cell of each notebook installs its experiment-specific dependencies. These include Transformers 4.51.3, Tokenizers 0.21.4, and Hugging Face Hub 0.34.4. GPU type and package versions are recorded when running. Numerical identity across different hardware and PyTorch builds is not guaranteed.
 
-Both notebooks use the reviewer's own Google Drive for checkpoints and new outputs. Do not mix a new run with an existing experiment directory. Preserve an existing directory before starting independently. No saved experiment output is required as an input.
+Both notebooks use your Google Drive for checkpoints and new outputs. Do not mix a new run with an existing experiment directory. Preserve an existing directory before starting independently. No saved experiment output is required as an input.
 
 ## 1. Corrected NLI experiment
 
-1. Download this repository as a ZIP and extract a local copy. Keep the ZIP for the upload in step 5. A ZIP downloaded from the anonymous mirror is suitable if it retains the directory structure and source content.
+1. Download this repository as a ZIP and extract a local copy. Keep the ZIP for the upload in step 5. Use the notebook from that same ZIP. To resume an existing run, use the original notebook and archive for that run.
 2. Open Colab, choose **File → Upload notebook**, and upload `notebooks/FACI_NLI_Review.ipynb` from the extracted copy.
 3. Select **Runtime → Change runtime type → T4 GPU**, or another available GPU.
 4. Run **Cell 1**, then choose **Runtime → Restart session**. After restarting, proceed to Cell 2; do not run Cell 1 again in the same session.
-5. Run **Cell 2** and authorize your own Drive. Upload the complete code ZIP when prompted. Setup locates `historical/code/` and `inputs/nli_manifest.json`, checks the frozen input file, and creates `MyDrive/FACI_NLI_Review`.
+5. Run **Cell 2** and authorize your own Drive. Upload the complete code ZIP when prompted. Setup locates `src/mechinterp/` and `inputs/nli_manifest.json`, checks the frozen input file, and creates `MyDrive/FACI_NLI_Review`.
 6. Run **Cells 3–6** in order to load the fixed protocol and define the measurements.
 7. Run **Cell 7** for calibration. Continue only if its checks pass.
 8. Run **Cell 8** for the two NLI classifiers, then **Cell 9** for the pretrained auxiliary measurements.
@@ -50,7 +50,7 @@ python scripts/plot_token_sites.py \
 
 The script writes the PDF and a PNG preview beside it. It uses the notebook's layer statistics without recalculating or changing the estimator. Plot dimensions and styling match the paper figure; installed fonts can affect appearance. The separate plotting requirements match the environment used to prepare the paper layout.
 
-## 4. Historical benchmark source
+## 4. Run the original benchmark
 
 The retained implementation covers the three tiers, architecture and task wrappers, ten-seed runner, negative controls, gap ablation, and historical analysis/plotting scripts. `configs/full8.yaml` is the shared configuration of the ten archived canonical runs; only their seed and output directory differed.
 
@@ -59,12 +59,11 @@ The following runs the supplied historical implementation. It is not a certifica
 In a separate Python environment with a suitable PyTorch GPU build, start from the repository root:
 
 ```bash
-python -m pip install -r requirements-historical.txt
-cd historical/code
+python -m pip install -r requirements-benchmark.txt
 PYTHONPATH="$PWD/src" python scripts/run_multiseed.py \
   --config configs/full8.yaml \
   --seeds 42 123 456 789 1000 2024 3141 5555 7777 9999 \
-  --output-dir ../../reproduced/historical
+  --output-dir reproduced/benchmark
 ```
 
 The working directory matters: the runner launches `scripts/run_benchmark.py` as a subprocess. The explicit seed list avoids its five-seed default. The supplied requirements are a starting environment based on the corrected experiment's compatible package versions, not a recovered historical environment lockfile. The full benchmark is substantially larger than either bounded notebook, and no runtime estimate is asserted here.
