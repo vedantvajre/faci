@@ -14,7 +14,7 @@ Uday Kamath and Vedant Vajre, accepted at ICAART 2027.
 | Token-site experiment | `notebooks/FACI_Token_Sites_v1.ipynb` |
 | Paper-layout token-site figure generator | `scripts/plot_token_sites.py` |
 
-The paper cites the [v1.0.0 release](https://github.com/vedantvajre/faci/releases/tag/v1.0.0).
+The paper cites the [v1.0.1 release](https://github.com/vedantvajre/faci/releases/tag/v1.0.1).
 
 Start with [REPRODUCING.md](REPRODUCING.md) for sequential Colab instructions, dependencies, hardware, and output locations. The notebooks download public checkpoints and require a GPU and network access. The token-site notebook obtains its data from pinned sources. The NLI input manifest preserves the exact examples and model revisions used in the correction; it contains no completed measurements.
 
