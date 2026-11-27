@@ -6,11 +6,15 @@ Uday Kamath and Vedant Vajre, accepted at ICAART 2027.
 
 | Material | Location |
 | --- | --- |
-| FACI framework, benchmark, and control drivers | `historical/code/` |
+| FACI Python package | [`src/mechinterp/`](src/mechinterp/) |
+| Benchmark and control scripts | [`scripts/`](scripts/) |
+| Eight-model benchmark configuration | [`configs/full8.yaml`](configs/full8.yaml) |
 | Corrected BERT/RoBERTa NLI experiment | `notebooks/FACI_NLI_Review.ipynb` |
 | Frozen NLI examples and checkpoint revisions | `inputs/nli_manifest.json` |
 | Token-site experiment | `notebooks/FACI_Token_Sites_v1.ipynb` |
 | Paper-layout token-site figure generator | `scripts/plot_token_sites.py` |
+
+The paper cites the [v1.0.0 release](https://github.com/vedantvajre/faci/releases/tag/v1.0.0).
 
 Start with [REPRODUCING.md](REPRODUCING.md) for sequential Colab instructions, dependencies, hardware, and output locations. The notebooks download public checkpoints and require a GPU and network access. The token-site notebook obtains its data from pinned sources. The NLI input manifest preserves the exact examples and model revisions used in the correction; it contains no completed measurements.
 
